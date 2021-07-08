@@ -1,3 +1,4 @@
+//brings in check is empty from authmethods file
 const { checkIsEmpty } = require("../../utils/authMethods");
 
 //this function checks any incoming data is empty if is empty send error message back

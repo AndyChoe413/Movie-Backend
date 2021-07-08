@@ -1,9 +1,11 @@
+//brings in all check functions from authmethods file
 const {
   checkIsEmail,
   checkIsAlpha,
   checkIsAlphanumeric,
 } = require("../../utils/authMethods");
 
+//checks if email is correct
 function checkIsEmailFunc(req, res, next) {
   const { errorObj } = res.locals;
 
@@ -13,7 +15,7 @@ function checkIsEmailFunc(req, res, next) {
 
   next();
 }
-
+//checks if first name and last name are letters
 function checkIsAlphaFunc(req, res, next) {
   const { errorObj } = res.locals;
   const inComingData = req.body;
@@ -27,7 +29,7 @@ function checkIsAlphaFunc(req, res, next) {
 
   next();
 }
-
+//checks if username is alphanumeric
 function checkIsAlphanumericFunc(req, res, next) {
   const { errorObj } = res.locals;
   if (!checkIsAlphanumeric(req.body.username)) {
@@ -36,7 +38,7 @@ function checkIsAlphanumericFunc(req, res, next) {
 
   next();
 }
-
+//exports check functions
 module.exports = {
   checkIsEmailFunc,
   checkIsAlphaFunc,

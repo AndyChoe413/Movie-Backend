@@ -1,5 +1,6 @@
+//brings in ErrorMessageHandlerClass file 
 const ErrorMessageHandlerClass = require("./ErrorMessageHandlerClass");
-
+//returns error for development mode
 function dispatchErrorDevelopment(error, req, res) {
   if (req.originalUrl.startsWith("/api")) {
     return res.status(error.statusCode).json({
@@ -10,6 +11,7 @@ function dispatchErrorDevelopment(error, req, res) {
     });
   }
 }
+//returns error for production mode
 function dispatchErrorProduction(error, req, res) {
   if (req.originalUrl.startsWith("/api")) {
     if (error.isOperational) {
@@ -67,6 +69,7 @@ function handleMongoDBDuplicate(err) {
 //   return new ErrorMessageHandlerClass(message, 400);
 // }
 
+//exports errors and handles them
 module.exports = (err, req, res, next) => {
   // console.log(err);
   // console.log(err.message);

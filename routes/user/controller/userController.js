@@ -1,8 +1,9 @@
+//brings in middleware
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
+//brings in mongoose schema
 const User = require("../model/User");
-
+//handles signup function
 async function signup(req, res, next) {
   const { username, email, password, firstName, lastName } = req.body;
 
@@ -13,6 +14,7 @@ async function signup(req, res, next) {
   }
 
   try {
+    //creates encryption
     let salt = await bcrypt.genSalt(12);
     let hashedPassword = await bcrypt.hash(password, salt);
 
@@ -35,7 +37,7 @@ async function signup(req, res, next) {
     next(e);
   }
 }
-
+//handles login and errors
 async function login(req, res) {
   const { email, password } = req.body;
 
@@ -63,6 +65,7 @@ async function login(req, res) {
           payload: "Please check your email and password",
         });
       } else {
+        //uses token to sign in for 1 day
         let jwtToken = jwt.sign(
           {
             email: foundUser.email,

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+//uses mongoose to setup a schema for mongoDB
 const userSchema = new mongoose.Schema({
   firstName: {
     type: String,

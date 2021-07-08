@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const jwtMiddleware = require("../utils/jwtMiddleware");
-
+//brings in token and twilio account sid from .env file
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
+//creates a client variable to use twilio with sid and token
 const client = require("twilio")(accountSid, authToken);
-
+//sets up route for text message and catches errors
 router.post("/send-sms", jwtMiddleware, function (req, res) {
   client.messages
     .create({

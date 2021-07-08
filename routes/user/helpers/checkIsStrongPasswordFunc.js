@@ -1,5 +1,5 @@
 const { checkIsStrongPassword } = require("../../utils/authMethods");
-
+//checks if password is strong enough
 function checkIsStrongPasswordFunc(req, res, next) {
   //let errorObj = {};
 
